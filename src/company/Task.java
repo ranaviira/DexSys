@@ -8,64 +8,74 @@ public class Task {
         Scanner scanner = new Scanner(System.in);
 
         Text text = new Text();
-        Group num = new Group();
+        Group numb = new Group();
 
         while (true) {
 
             text.printCommand();
-            int com = scanner.nextInt();
+            int commmand = scanner.nextInt();
 
-            if (com == 1) {
+            if (commmand == 1) {
 
                 System.out.println("-----------------------------------------------------------------------");
-                System.out.println("Введите команду add и координаты через пробел");
-                System.out.println("Пример add 1 -9 2 3");
+                System.out.println("Введите в память программы координаты точек через пробел");
+                System.out.println("Пример 1 -9 2 3");
                 System.out.println("-----------------------------------------------------------------------");
 
                 Scanner pointScanner = new Scanner(System.in);
-                String line = pointScanner.nextLine();
-                String[] numbers = line.split(" ");
+                String addPoint = pointScanner.nextLine();
+                String[] numbers = addPoint.split(" ");
 
-                num.getArray(numbers);
-
-            }
-            else if (com == 2) {
-                num.printGroup(1);
-                num.printGroup(2);
-                num.printGroup(3);
-            }
-
-            else if (com == 3) {
-                System.out.println("Введите группу от 1 до 3");
-                int com1 = scanner.nextInt();
-
-                num.printGroup(com1);
+                numb.getArray(numbers);
 
             }
-            else if (com == 4) {
-                System.out.println("Введите группу от 1 до 3");
-                int com2 = scanner.nextInt();
-                num.removePoint(com2);
+            else if (commmand == 2) {
+                numb.printGroup(1);
+                numb.printGroup(2);
+                numb.printGroup(3);
+            }
+
+            else if (commmand == 3) {
+                System.out.println("-----------------------------------------------------------------------");
+                System.out.println("Введите номер группы от 1 до 3");
+                System.out.println("-----------------------------------------------------------------------");
+                int inputGroup = scanner.nextInt();
+
+                numb.printGroup(inputGroup);
+
+            }
+            else if (commmand == 4) {
+                System.out.println("-----------------------------------------------------------------------");
+                System.out.println("Введите номер группы от 1 до 3");
+                System.out.println("-----------------------------------------------------------------------");
+                int inputGroup = scanner.nextInt();
+
+                numb.removePoint(inputGroup);
 
                 System.out.println("-----------------------------------------------------------------------");
-                System.out.println("удалить из памяти все точки, входящие в группу(ы) <group_num>");
+                System.out.println("Точки, входящие в группу" + inputGroup + ", удалены");
                 System.out.println("-----------------------------------------------------------------------");
             }
 
-            else if (com == 5) {
-                num.list.clear();
+            else if (commmand == 5) {
+                numb.list.clear();
                 System.out.println("-----------------------------------------------------------------------");
                 System.out.println("Память очищена");
                 System.out.println("-----------------------------------------------------------------------");
             }
-            else if (com == 6) {
+            else if (commmand == 6) {
                 text.printHelp();
             }
-            else if (com == 7) {
+            else if (commmand == 7) {
+                System.out.println("-----------------------------------------------------------------------");
                 System.out.println("Выход");
+                System.out.println("-----------------------------------------------------------------------");
                 return;
             }
-            else {System.out.println("Такой команды пока нет");}
+            else {
+                System.out.println("-----------------------------------------------------------------------");
+                System.out.println("Такой команды пока нет. Выберете команду от 1 до 7");}
+                System.out.println("-----------------------------------------------------------------------");
 
         }
     }

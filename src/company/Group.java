@@ -7,7 +7,7 @@ public class Group {
 
     void getArray(String[] numbers) {
 
-            for (int i = 0; i < numbers.length; ++i) {
+            for (int i = 0; i < numbers.length; i++) {
                 list.add(Integer.parseInt(numbers[i]));
             }
             System.out.println("-----------------------------------------------------------------------");
@@ -15,45 +15,44 @@ public class Group {
             System.out.println("-----------------------------------------------------------------------");
     }
 
-    void removePoint(int num){
-        double a1 = Math.pow(list.get(0), num) - list.get(1); //x¹-y <=0; 1 группа   x²-y <=0; 2 группа    x³-y <=0; 3 группа
-        double a2 = Math.pow(list.get(2), num) - list.get(3);
+    void removePoint(int groupNum){
+        double point1 = Math.pow(list.get(0), groupNum) - list.get(1); //x¹-y <=0; groupNum = 1 группа   x²-y <=0; 2 группа    x³-y <=0; 3 группа
+        double point2 = Math.pow(list.get(2), groupNum) - list.get(3);
 
         System.out.println("-----------------------------------------------------------------------");
-        if (a1 <= 0 && a2 <= 0) {
+        if (point1 <= 0 && point2 <= 0) {
             list.clear();
-            System.out.println("Из группы " + num + " удалены 2 точки");
+            System.out.println("Из группы " + groupNum + " удалены 2 точки");
         }
-        else if (a1 <= 0) {
+        else if (point1 <= 0) {
             list.remove(0);
             list.remove(1);
-            System.out.println("Из группы " + num + " удалена 1 точки");
-        } else if (a2 <= 0) {
+            System.out.println("Из группы " + groupNum + " удалена 1 точка");
+        } else if (point2 <= 0) {
             list.remove(2);
             list.remove(3);
-            System.out.println("Из группы " + num + " удалена 1 точки");
+            System.out.println("Из группы " + groupNum + " удалена 1 точка");
         } else {
-            System.out.println("Нет точек входящих в группу " + num);
+            System.out.println("Нет точек входящих в группу " + groupNum);
         }
-        System.out.println("-----------------------------------------------------------------------");
+
     }
-    void printGroup(int num) {
+    void printGroup(int groupNum) {
 
-        double a1 = Math.pow(list.get(0), num) - list.get(1); //x¹-y <=0; 1 группа   x²-y <=0; 2 группа    x³-y <=0; 3 группа
-        double a2 = Math.pow(list.get(2), num) - list.get(3);
+        double point1 = Math.pow(list.get(0), groupNum) - list.get(1); //x¹-y <=0; groupNum = 1 группа   x²-y <=0; 2 группа    x³-y <=0; 3 группа
+        double point2 = Math.pow(list.get(2), groupNum) - list.get(3);
+
         System.out.println("-----------------------------------------------------------------------");
 
-        if (a1 <= 0 && a2 <= 0) {
-            System.out.println("В группу " + num + " входят 2 точки c координатами (" + list.get(0) + "," + list.get(1) + ")(" + list.get(2) + "," + list.get(3) + ")");
-        } else if (a1 <= 0) {
-            System.out.println("В группу " + num + " входит 1 точка c координатами (" + list.get(0) + "," + list.get(1) + ")");
-        } else if (a2 <= 0) {
-            System.out.println("В группу " + num + " входит 1 точка c координатами (" + list.get(2) + "," + list.get(3) + ")");
+        if (point1 <= 0 && point2 <= 0) {
+            System.out.println("В группу " + groupNum + " входят 2 точки c координатами (" + list.get(0) + "," + list.get(1) + ")(" + list.get(2) + "," + list.get(3) + ")");
+        } else if (point1 <= 0) {
+            System.out.println("В группу " + groupNum + " входит 1 точка c координатами (" + list.get(0) + "," + list.get(1) + ")");
+        } else if (point2 <= 0) {
+            System.out.println("В группу " + groupNum + " входит 1 точка c координатами (" + list.get(2) + "," + list.get(3) + ")");
         } else {
-            System.out.println("Группа " + num + " пуста");
+            System.out.println("Группа " + groupNum + " пуста");
         }
-        System.out.println("-----------------------------------------------------------------------");
-
 
     }
 }
